@@ -25,16 +25,13 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = Tweet.new(tweet_params)
-
-    respond_to do |format|
-      if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
-        format.json { render :show, status: :created, location: @tweet }
-      else
-        format.html { render :new }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
-      end
+    @tweet = current_user.tweets.build(tweet_params)
+    if @tweet.save
+      flash[:success] = "Tweet submitted"
+      redirect_to root_url
+    else
+      flash[:error] = "Tweet not submitted"
+      redirect_to root_url
     end
   end
 

@@ -31,9 +31,11 @@
 
 <div class="container user-tweets-container">
   <% if @user.tweets.any? %>
-    <h2>Tweets</h2>
+    <h2><%= @user.tweets.count %></h2>
     <ol>
-      <%= render @tweets %>
+      <% @user.tweets.each do |tweet| %>
+        <li> <%= tweet.content %></li>
+      <% end %>
     </ol>
   <% else %>
     <h2>Nothing here yet.</h2>
