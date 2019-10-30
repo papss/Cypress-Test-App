@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :tweets, dependent: :destroy
+
   before_save { self.email = email.downcase }
   before_create :create_remember_token
 
@@ -13,8 +15,6 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: { minimum: 6 }
 
-  # has_many :tweets
-
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
@@ -27,6 +27,6 @@ class User < ApplicationRecord
 
     def create_remember_token
       self.remember_token = User.digest(User.new_remember_token)
-    end 
+    end
 
 end

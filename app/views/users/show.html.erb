@@ -1,24 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class="container user-info-container">
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
 
-<p>
-  <strong>Bio:</strong>
-  <%= @user.bio %>
-</p>
+  <p>
+    <strong>Bio:</strong>
+    <%= @user.bio %>
+  </p>
 
-<p>
-  <strong>Profile pic:</strong>
-  <%= @user.profile_pic %>
-</p>
+  <p>
+    <strong>Profile pic:</strong>
+    <%= @user.profile_pic %>
+  </p>
 
-<p>
-  <strong>Follower:</strong>
-  <%= @user.follower_id %>
-</p>
+  <p>
+    <strong>Follower:</strong>
+    <%= @user.follower_id %>
+  </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <% if current_user.admin? && !current_user?(user) %>
+    <%= link_to "Delete", user, method: :delete,
+                                data: { confirm: "You sure?" } %> |
+  <% end %>
+  <%= link_to 'Back', users_path %>
+</div>
+
+<div class="container user-tweets-container">
+  <% if @user.tweets.any? %>
+    <h2>Tweets</h2>
+    <ol>
+      <%= render @tweets %>
+    </ol>
+  <% else %>
+    <h2>Nothing here yet.</h2>
+  <% end %>
+</div>
+
+<div class="container new-tweet-container">
+  <% if signed_in? %>
+    <div class="container tweet-form">
+      <%= link_to 'New Tweet', new_tweet_path %>
+    </div>
+  <% else %>
+    <h2> Sign in to tweet. </h2>
+  <% end %>
+</div>
