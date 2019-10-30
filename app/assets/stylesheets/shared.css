@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+}
+
+.header-container {
+  height: 100px;
+  width: 100%;
+  background: #81b4e3;
+}
+
+.header-logo {
+  width: 20%;
+  text-align: center;
+}
+
+.header-logo > h1 {
+  margin: auto;
+  font-size: 42px;
+}
+
+.header-navigation {
+  width: 80%;
+  justify-content: right;
+}
+
+.nav-item {
+  align-items: center;
+  width: 20%;
+  font-size: 36px;
+}
