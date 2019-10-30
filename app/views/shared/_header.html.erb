@@ -4,12 +4,28 @@
       <h1>Logo!</h1>
     </div>
     <div class="container header-navigation">
+
+      <% if signed_in? %>
+
+        <div class="container nav-item">
+          <h2>Profile</h2>
+        </div>
+
+        <div class="container nav-item">
+          <%= link_to "Log Out", logout_path, method: "delete" %>
+        </div>
+
+      <% else %>
+
       <div class="container nav-item">
-        <h2>Log In</h2>
+        <%= link_to "Sign In", new_session_path %>
       </div>
       <div class="container nav-item">
         <%= link_to "Register", new_user_path %>
       </div>
+
+      <% end %>
+
     </div>
   </div>
 </header>
