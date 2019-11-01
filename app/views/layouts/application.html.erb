@@ -10,8 +10,13 @@
   </head>
 
   <body>
+
     <%= render "shared/header" %>
-    <%= yield %>
+    
+    <div class="container site-container">
+  <%= yield %>
+    </div>
+
     <% console %>
   </body>
 </html>

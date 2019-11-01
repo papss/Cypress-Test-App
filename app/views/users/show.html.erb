@@ -1,42 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container user-info-container">
-  <p>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </p>
-
-  <p>
-    <strong>Bio:</strong>
-    <%= @user.bio %>
-  </p>
-
-  <p>
-    <strong>Profile pic:</strong>
-    <%= @user.profile_pic %>
-  </p>
-
-  <p>
-    <strong>Follower:</strong>
-    <%= @user.follower_id %>
-  </p>
-
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <% if current_user.admin? && !current_user?(user) %>
-    <%= link_to "Delete", user, method: :delete,
-                                data: { confirm: "You sure?" } %> |
-  <% end %>
-  <%= link_to 'Back', users_path %>
+<div class="container user-profile-container">
+  <div class="container user-header">
+    <div class="container user-image">
+      <%= @user.profile_pic %>
+    </div>
+    <div class="container user-name">
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </div>
+  </div>
+  <div class="container user-info">
+    <div class="container user-bio">
+      <%= @user.bio %>
+    </div>
+    <div class="container user-followers">
+      <%= @user.follower_id %>
+    </div>
+  </div>
+  <div class="container user-controls">
+      <%= link_to 'Edit', edit_user_path(@user) %> |
+      <% if current_user.admin? && !current_user?(user) %>
+        <%= link_to "Delete", user, method: :delete,
+                                    data: { confirm: "You sure?" } %> |
+      <% end %>
+      <%= link_to 'Back', users_path %>
+  </div>
 </div>
 
 <div class="container user-tweets-container">
   <% if @user.tweets.any? %>
-    <h2><%= @user.tweets.count %></h2>
-    <ol>
+    <!-- <h2><%= @user.tweets.count %></h2> -->
       <% @user.tweets.each do |tweet| %>
-        <li> <%= tweet.content %></li>
+          <div class="container tweet-container">
+            <div class="container tweet-header">
+              <%= tweet.user_id %>
+            </div>
+            <div class="container tweet-content">
+              <%= tweet.content %>
+            </div>
+            <div class="container tweet-info">
+              <%= tweet.created_at %>
+            </div>
+          </div>
       <% end %>
-    </ol>
   <% else %>
     <h2>Nothing here yet.</h2>
   <% end %>

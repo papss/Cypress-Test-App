@@ -8,7 +8,7 @@
       <% if signed_in? %>
 
         <div class="container nav-item">
-          <h2>Profile</h2>
+          <%= link_to "Profile", user_path(current_user) %>
         </div>
 
         <div class="container nav-item">
