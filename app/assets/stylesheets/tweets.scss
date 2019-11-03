@@ -12,6 +12,9 @@
 .tweet-header {
   width: 100%;
   padding: 10px;
+  padding-top: 30px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .tweet-content {
@@ -21,5 +24,10 @@
 
 .tweet-info {
   width: 100%;
-  padding: 10px; 
+  padding: 10px;
+}
+
+.tweet-user-image-container {
+  width: 75px;
+  height: 75px;
 }

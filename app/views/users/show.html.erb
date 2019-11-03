@@ -3,7 +3,7 @@
 <div class="container user-profile-container">
   <div class="container user-header">
     <div class="container user-image">
-      <%= @user.profile_pic %>
+      <%= image_tag(@user.profile_pic, class: "image profile-image") %>
     </div>
     <div class="container user-name">
       <h1>
@@ -30,12 +30,19 @@
 </div>
 
 <div class="container user-tweets-container">
+
   <% if @user.tweets.any? %>
     <!-- <h2><%= @user.tweets.count %></h2> -->
       <% @user.tweets.each do |tweet| %>
+
           <div class="container tweet-container">
             <div class="container tweet-header">
-              <%= tweet.user_id %>
+              <div class="container tweet-user-image-container">
+                <%= image_tag(tweet.user.profile_pic, class: "image tweet-image")%>
+              </div>
+              <div class="header tweet-author">
+                <h2> <%= tweet.user.name %></h2>
+              </div>
             </div>
             <div class="container tweet-content">
               <%= tweet.content %>
@@ -45,9 +52,11 @@
             </div>
           </div>
       <% end %>
+
   <% else %>
     <h2>Nothing here yet.</h2>
   <% end %>
+
 </div>
 
 <div class="container new-tweet-container">
