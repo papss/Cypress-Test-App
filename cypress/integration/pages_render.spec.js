@@ -20,9 +20,15 @@ context('Render Pages', () => {
   // for some reason.
   // Maybe related to the same bug that makes the internal chrome browser
   // not work?
+  // SOLUTION: you need to pass the user ID number in as an additional specific
+  //           query parameter, or it won't work. 
 
   it('Visit a specific user page', () => {
-    cy.visit('users/2')
+    cy.visit('users', {
+      qs: {
+        page: '2'
+      }
+    })
   })
 
   it('Visit the tweets index', () => {
