@@ -10,9 +10,15 @@
 
 .tweet-container {
   width: 600px;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   flex-wrap: wrap;
   background-color: #fafcff;
+}
+
+.new-tweet-container {
+  background-color: #fafcff;
+  padding: 10px;
+  margin-top: 5px;  
 }
 
 .tweet-header {
