@@ -24,7 +24,7 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to new_session_url, notice: "please log in"
+      redirect_to login_path, notice: "please log in"
     end
   end
 
