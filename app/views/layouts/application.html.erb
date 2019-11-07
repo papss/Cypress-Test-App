@@ -12,9 +12,12 @@
   <body>
 
     <%= render "shared/header" %>
-    
+
     <div class="container site-container">
-  <%= yield %>
+      <div class="container notice-container">
+        <div id="notice"><%= notice %></div>
+      </div>
+        <%= yield %>
     </div>
 
     <% console %>
